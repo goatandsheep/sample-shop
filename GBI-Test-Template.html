@@ -27,6 +27,16 @@
        */
       function Product( obj ) {
         // ...
+        this.desc = obj.desc;
+        this.price = obj.price;
+        this.sale = obj.sale;
+        this.title = obj.title;
+
+        function render() {
+          // 
+          document.querySelector('.products');
+        }
+
       }
 
       /**
@@ -89,6 +99,12 @@
       window.addEventListener( 'load', init );
       function init() {
         // ...
+        fetch('http://private-152094-gbitest.apiary-mock.com/products').then((response) => {
+          console.log("products: ", response);
+        })
+        fetch('https://private-152094-gbitest.apiary-mock.com/navs').then((response) => {
+          console.log("navs: ", response);
+        })
       }
     </script>
     <style>
