@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GBI Test</title>
+    <script>
+      /* all your JAVASCRIPT code goes here */
+
+      /**
+       * Create a `Product` Class
+       * - it should have a constructor
+       *   - which accepts a JSON object
+       *   - the object will carry {`title`,`desc`,`price`,`sale`}
+       *
+       * - it should create some private variables (using the JSON):
+       *   - `title`, `desc`, `price`, `sale`
+       *
+       * - it should have a `render` function
+       *   - which will return a DOM NODE used for displaying this product
+       *   - the product should consist of a DIV
+       *     - with a class `product-tile`
+       *     - that contains
+       *       - an image (http://via.placeholder.com/144x180)
+       *       - product title
+       *       - product price
+       *       - product description
+       *       - and a badge indicating whether the product is on sale
+       */
+      function Product( obj ) {
+        // ...
+      }
+
+      /**
+       * Create a `Nav` Class
+       * - it should have a constructor
+       *   - which accepts a JSON object
+       *   - the object will carry {`label`,`attr`}
+       *
+       * - it should create some private variables (using the JSON):
+       *   - label, attr
+       *
+       * - it should have a `render` function
+       *   - which will return a DOM NODE used for displaying this nav
+       *   - the nav should consist of
+       *     - a radio button
+       *     - a label to display the `label` text
+       *   - clicking the radio button should communicate to the Grid
+       *     - by sending the `attr` in a `CustomEvent`
+       *     - the Grid will sort the products on the provided `attr`ibute
+       */
+      function Nav( obj ) {
+        // ...
+      }
+
+      /**
+       * Create a `Grid` class
+       * - it should have a constructor
+       *   - which accepts a JSON object
+       *   - the object will carry `{ products:[], navs:[]}`
+       *
+       * - it should have a `renderProducts` function
+       *   - which instantiates `Product`s for each item in the JSON array
+       *   - and inserts the Product DOM Nodes into a DOM placeholder (with class `products`)
+       *   - using the `Product`s `render` function
+       *
+       * - it should have a `renderNavs` function
+       *   - which instantiates `Nav`s for each item in the JSON array
+       *   - and inserts the Nav DOM Nodes into a DOM placeholder (with class `nav`)
+       *   - using the `Nav`s `render` function
+       *
+       * - it should listen for communication from the Nav items
+       *   - the Nav items will send an `attr`
+       *   - the Grid should sort the `Product`s in ascending order
+       *   - using the provided `attr` of the Product
+       */
+      function Grid( json ) {
+        // ...
+      }
+
+
+      /**
+       * Create an event listener that fires when the window has loaded
+       * - it should execute the init function
+       *   - which should first read the JSON from remote endpoints
+       *     - retrieve `products` from `http://private-152094-gbitest.apiary-mock.com/products`
+       *     - retrieve `navs` from `https://private-152094-gbitest.apiary-mock.com/navs`
+       *   - instantiate Grid using the `products` and `navs` from the received JSON
+       *     - call the `renderNavs` and `renderProducts`
+       */
+      window.addEventListener( 'load', init );
+      function init() {
+        // ...
+      }
+    </script>
+    <style>
+      /* all your STYLESHEETS go here */
+    </style>
+  </head>
+  <body>
+    <div class='wrapper'>
+      <div class='nav'></div>
+      <div class='products'></div>
+    </div>
+  </body>
+</html>
