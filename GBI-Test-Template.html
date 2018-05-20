@@ -27,14 +27,16 @@
        */
       function Product( obj ) {
         // ...
-        this.desc = obj.desc;
-        this.price = obj.price;
-        this.sale = obj.sale;
-        this.title = obj.title;
+        this._desc = obj.desc;
+        this._price = obj.price;
+        this._sale = obj.sale;
+        this._title = obj.title;
 
         function render() {
           let template = `a`;
-          document.querySelector('.products').innerHTML += template;
+          let node = document.createElement('div');
+          node.innerHTML = template;
+          return node;
         }
         render();
 
@@ -60,12 +62,14 @@
        */
       function Nav( obj ) {
         // ...
-        this.attr = obj.attr;
-        this.label = obj.label;
+        this._attr = obj.attr;
+        this._label = obj.label;
 
         function render() {
           let template = `a`;
-          document.querySelector('.nav').innerHTML += template;
+          let node = document.createElement('div');
+          node.innerHTML = template;
+          return node;
         }
         render();
       }
@@ -98,13 +102,13 @@
 
         function renderProducts() {
           for (let i = 0; i < products.length; i++) {
-            //
-          }          
+            document.querySelector('.products').appendChild(new Product(products[i]));
+          }
         }
 
         function renderNavs() {
           for (let i = 0; i < navs.length; i++) {
-            //
+            document.querySelector('.nav').appendChild(new Nav(navs[i]));
           }
         }
 
@@ -126,19 +130,17 @@
       window.addEventListener( 'load', init );
       function init() {
         // ...
-        // let navs;
+        let navs;
         let products;
         fetch('http://private-152094-gbitest.apiary-mock.com/products')
-          .then(response => response.body)
           .then((products) => {
-            this.products = products;
-            console.log("products: ", products);
+            this.products = products.body;
+            console.log("products: ", this.products);
 
             fetch('https://private-152094-gbitest.apiary-mock.com/navs')
-              .then(response => response.body)
               .then((navs) => {
-                this.navs = navs;
-                console.log("navs: ", navs);
+                this.navs = navs.body;
+                console.log("navs: ", this.navs);
                 debugger
                 let json = {products: this.products, navs: this.navs}
 
