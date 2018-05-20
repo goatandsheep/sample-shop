@@ -133,21 +133,20 @@
         let navs;
         let products;
         fetch('http://private-152094-gbitest.apiary-mock.com/products')
-          .then((products) => {
-            this.products = products.body;
+          .then(response => response.json().then((products) => {
+            this.products = products;
             console.log("products: ", this.products);
 
             fetch('https://private-152094-gbitest.apiary-mock.com/navs')
-              .then((navs) => {
-                this.navs = navs.body;
+              .then(response => response.json().then((navs) => {
+                this.navs = navs;
                 console.log("navs: ", this.navs);
-                debugger
                 let json = {products: this.products, navs: this.navs}
 
                 let grid = new Grid(json)
-              })
+              }))
               .catch(error => console.error(error))
-          })
+          }))
           .catch(error => console.error(error))
       }
     </script>
