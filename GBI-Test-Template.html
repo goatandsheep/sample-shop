@@ -33,12 +33,12 @@
         this._title = obj.title;
 
         function render() {
-          let template = `a`;
+          let template = `p`;
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
         }
-        render();
+        return render();
 
       }
 
@@ -66,12 +66,12 @@
         this._label = obj.label;
 
         function render() {
-          let template = `a`;
+          let template = `n`;
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
         }
-        render();
+        return render();
       }
 
       /**
@@ -102,12 +102,14 @@
 
         function renderProducts() {
           for (let i = 0; i < products.length; i++) {
+            console.log("product: ", products[i])
             document.querySelector('.products').appendChild(new Product(products[i]));
           }
         }
 
         function renderNavs() {
           for (let i = 0; i < navs.length; i++) {
+            console.log("navs: ", navs[i])
             document.querySelector('.nav').appendChild(new Nav(navs[i]));
           }
         }
@@ -135,12 +137,10 @@
         fetch('http://private-152094-gbitest.apiary-mock.com/products')
           .then(response => response.json().then((products) => {
             this.products = products;
-            console.log("products: ", this.products);
 
             fetch('https://private-152094-gbitest.apiary-mock.com/navs')
               .then(response => response.json().then((navs) => {
                 this.navs = navs;
-                console.log("navs: ", this.navs);
                 let json = {products: this.products, navs: this.navs}
 
                 let grid = new Grid(json)
