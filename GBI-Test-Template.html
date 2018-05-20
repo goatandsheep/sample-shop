@@ -33,9 +33,9 @@
         this.title = obj.title;
 
         function render() {
-          // 
           document.querySelector('.products');
         }
+        render();
 
       }
 
@@ -59,6 +59,13 @@
        */
       function Nav( obj ) {
         // ...
+        this.attr = obj.attr;
+        this.label = obj.label;
+
+        function render() {
+          document.querySelector('.nav')
+        }
+        render();
       }
 
       /**
@@ -117,15 +124,21 @@
       window.addEventListener( 'load', init );
       function init() {
         // ...
+        // let navs;
+        let products;
         fetch('http://private-152094-gbitest.apiary-mock.com/products')
           .then((products) => {
+            this.products = products.body;
             console.log("products: ", products);
 
             fetch('https://private-152094-gbitest.apiary-mock.com/navs')
               .then((navs) => {
+                this.navs = navs.body;
                 console.log("navs: ", navs);
+                debugger
+                let json = {products: this.products, navs}
 
-                let grid = new Grid({products, navs})
+                let grid = new Grid(json)
               })
               .catch(error => console.error(error))
           })

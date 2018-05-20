@@ -9,3 +9,4 @@ Test for GroupBy
 ## Suggestions
 
 * I'd avoid using the Grid object altogether as to render the navs and products separately. Especially since the navs and products are loaded separately, I'd also want to use the data asynchronously separately.
+* I'd rename the HTML nav class to navs to be consistent with the javascript arrays
