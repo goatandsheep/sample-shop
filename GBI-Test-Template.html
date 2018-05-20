@@ -84,6 +84,24 @@
        */
       function Grid( json ) {
         // ...
+        this.products = json.products;
+        this.navs = json.navs;
+
+        function renderProducts() {
+          for (let i = 0; i < products.length; i++) {
+            //
+          }          
+        }
+
+        function renderNavs() {
+          for (let i = 0; i < navs.length; i++) {
+            //
+          }
+        }
+
+        renderProducts();
+        renderNavs();
+
       }
 
 
@@ -99,12 +117,19 @@
       window.addEventListener( 'load', init );
       function init() {
         // ...
-        fetch('http://private-152094-gbitest.apiary-mock.com/products').then((response) => {
-          console.log("products: ", response);
-        })
-        fetch('https://private-152094-gbitest.apiary-mock.com/navs').then((response) => {
-          console.log("navs: ", response);
-        })
+        fetch('http://private-152094-gbitest.apiary-mock.com/products')
+          .then((products) => {
+            console.log("products: ", products);
+
+            fetch('https://private-152094-gbitest.apiary-mock.com/navs')
+              .then((navs) => {
+                console.log("navs: ", navs);
+
+                let grid = new Grid({products, navs})
+              })
+              .catch(error => console.error(error))
+          })
+          .catch(error => console.error(error))
       }
     </script>
     <style>
