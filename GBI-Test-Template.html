@@ -33,7 +33,7 @@
         this._title = obj.title;
 
         this.render = () => {
-          let template = `<div><img>${this._sale ? `<div>On Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
+          let template = `<div><img class="shop-img">${this._sale ? `<div class="for-sale">On<br>Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -66,7 +66,7 @@
         this._label = obj.label;
 
         this.render = () => {
-          let template = `<input type="radio" name="sort" value="${this._attr}">${this._label}<br>`;
+          let template = `<input class="radio" type="radio" name="sort" value="${this._attr}">${this._label}<br>`;
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -101,9 +101,6 @@
         this.navs = json.navs;
 
         function renderProducts() {
-          // let template = `${this.products.map(product => `<div><img>${product.sale?`<div>On Sale</div>`:``}<div class="product-top"><span class="product-title">${product.title}</span><span class="product-price">${product.price}</span></div><div class="product-desc">${product.desc}</div></div>`).join('')}`
-          // let nav = document.querySelector('.products').innerHTML = template;
-
           let productSection = document.querySelector('.products');
           for (let i = 0; i < products.length; i++) {
             let contents = new Product(this.products[i]);
@@ -112,9 +109,6 @@
         }
 
         function renderNavs() {
-          // let template = `${this.navs.map(nav => `<input type="radio" name="sort" value="${nav.attr}">${nav.label}<br>`).join('')}`;
-          // let nav = document.querySelector('.products').innerHTML = template;
-
           let navSection = document.querySelector('.nav');
           for (let i = 0; i < navs.length; i++) {
             let contents = new Nav(this.navs[i]);
@@ -162,6 +156,29 @@
       /* all your STYLESHEETS go here */
       body {
         font-family: Arial, Helvetica, sans-serif
+      }
+      .for-sale {
+        background-color: #cc0000;
+        color: white;
+        font-size: 8px;
+        text-align: center;
+        height: 25px;
+        vertical-align: middle;
+        width: 25px;
+
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Safari 3-8 */
+        transform: rotate(45deg);
+
+        -moz-border-radius: 12.5px; /* or 50% */
+        border-radius: 12.5px; /* or 50% */
+      }
+      .radio {
+        border: #878783;
+      }
+      .shop-img {
+        height: 180px;
+        width: 144px;
       }
     </style>
   </head>
