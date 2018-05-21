@@ -33,7 +33,7 @@
         this._title = obj.title;
 
         function render() {
-          let template = `p`;
+          let template = `<div><img>${this._sale ? `<div>On Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -66,7 +66,7 @@
         this._label = obj.label;
 
         function render() {
-          let template = ``;
+          let template = `<input type="radio" name="sort" value="${this._attr}">${this._label}<br>`;
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -101,20 +101,25 @@
         this.navs = json.navs;
 
         function renderProducts() {
-          let template = `${this.products.map(product => `<div><img><div class="product-top"><span class="product-title">${product.title}</span><span class="product-price">${product.price}</span></div><div class="product-desc">${product.desc}</div></div>`).join('')}`
-          let nav = document.querySelector('.products').innerHTML = template;
+          // let template = `${this.products.map(product => `<div><img>${product.sale?`<div>On Sale</div>`:``}<div class="product-top"><span class="product-title">${product.title}</span><span class="product-price">${product.price}</span></div><div class="product-desc">${product.desc}</div></div>`).join('')}`
+          // let nav = document.querySelector('.products').innerHTML = template;
+
+          let productSection = document.querySelector('.products');
+          for (let i = 0; i < products.length; i++) {
+            let contents = new Product(products[i]);
+            productSection.appendChild(contents.render());
+          }
         }
 
         function renderNavs() {
-          // for (let i = 0; i < navs.length; i++) {
-          //   console.log("navs: ", navs[i])
-          //   let template = `<input type="radio" name="sort" value="${navs[i].attr}">${navs[i].label}<br>`
-          //   let el = document.createElement('div')
-          //   el.innerHTML = template;
-          //   let nav = document.querySelector('.nav').appendChild(el);
-          // }
-          let template = `${this.navs.map(nav => `<input type="radio" name="sort" value="${nav.attr}">${nav.label}<br>`).join('')}`;
-          let nav = document.querySelector('.nav').innerHTML = template;
+          // let template = `${this.navs.map(nav => `<input type="radio" name="sort" value="${nav.attr}">${nav.label}<br>`).join('')}`;
+          // let nav = document.querySelector('.products').innerHTML = template;
+
+          let navSection = document.querySelector('.nav');
+          for (let i = 0; i < navs.length; i++) {
+            let contents = new Nav(navs[i]);
+            navSection.appendChild(contents.render());
+          }
         }
 
         renderProducts();
@@ -155,6 +160,9 @@
     </script>
     <style>
       /* all your STYLESHEETS go here */
+      body {
+        font-family: Arial, Helvetica, sans-serif
+      }
     </style>
   </head>
   <body>
