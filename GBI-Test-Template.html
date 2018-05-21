@@ -32,13 +32,13 @@
         this._sale = obj.sale;
         this._title = obj.title;
 
-        function render() {
+        this.render = () => {
           let template = `<div><img>${this._sale ? `<div>On Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
         }
-        return render();
+        return this.render();
 
       }
 
@@ -65,13 +65,13 @@
         this._attr = obj.attr;
         this._label = obj.label;
 
-        function render() {
+        this.render = () => {
           let template = `<input type="radio" name="sort" value="${this._attr}">${this._label}<br>`;
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
         }
-        return render();
+        return this.render();
       }
 
       /**
@@ -106,8 +106,8 @@
 
           let productSection = document.querySelector('.products');
           for (let i = 0; i < products.length; i++) {
-            let contents = new Product(products[i]);
-            productSection.appendChild(contents.render());
+            let contents = new Product(this.products[i]);
+            productSection.appendChild(contents);
           }
         }
 
@@ -117,8 +117,8 @@
 
           let navSection = document.querySelector('.nav');
           for (let i = 0; i < navs.length; i++) {
-            let contents = new Nav(navs[i]);
-            navSection.appendChild(contents.render());
+            let contents = new Nav(this.navs[i]);
+            navSection.appendChild(contents);
           }
         }
 
