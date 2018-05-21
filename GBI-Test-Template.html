@@ -101,10 +101,6 @@
         this.navs = json.navs;
 
         function renderProducts() {
-          // for (let i = 0; i < products.length; i++) {
-          //   console.log("product: ", products[i])
-          //   document.querySelector('.products').appendChild(new Product(products[i]));
-          // }
           let template = `${this.products.map(product => `<div><img><div class="product-top"><span class="product-title">${product.title}</span><span class="product-price">${product.price}</span></div><div class="product-desc">${product.desc}</div></div>`).join('')}`
           let nav = document.querySelector('.products').innerHTML = template;
         }
