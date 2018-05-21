@@ -33,7 +33,7 @@
         this._title = obj.title;
 
         this.render = () => {
-          let template = `<div><img class="shop-img">${this._sale ? `<div class="for-sale">On<br>Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
+          let template = `<div class="product"><img class="shop-img">${this._sale ? `<div class="for-sale">On<br>Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -173,6 +173,20 @@
         -moz-border-radius: 12.5px; /* or 50% */
         border-radius: 12.5px; /* or 50% */
       }
+      .nav {
+        background-color: #dddddd;
+        height: 100%;
+        left:0px;
+        padding: 10px;
+        position: absolute;
+        width: 15%;
+      }
+      .products {
+        background-color: #eeeeee;
+        display: inline-grid;
+        float: right;
+        width: 85%;
+      }
       .radio {
         border: #878783;
       }
@@ -180,6 +194,33 @@
         height: 180px;
         width: 144px;
       }
+      .wrapper {
+        height: 100%;
+        overflow:auto;
+        position: relative;
+        width: 100%;
+      }
+
+      .product {
+        background-color: white;
+        margin: 20px;
+        padding: 5px;
+      }
+
+      .product-top{}
+
+      .product-title{
+        font-weight: bold;
+      }
+
+      .product-price{
+        font-size: 12px;
+      }
+
+      .product-desc{
+        font-size: 10px;
+      }
+
     </style>
   </head>
   <body>
