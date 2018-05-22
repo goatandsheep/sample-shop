@@ -101,7 +101,8 @@
         this.navs = json.navs;
 
         function sort() {
-          renderProducts();
+          window.alert('hi')
+          // renderProducts();
         }
 
         function renderProducts() {
@@ -114,11 +115,11 @@
 
         function renderNavs() {
           let navSection = document.querySelector('.nav');
-          for (let i = 0; i < navs.length; i++) {
+          for (let i = 0; i < this.navs.length; i++) {
             let contents = new Nav(this.navs[i]);
-            let input = contents.childNodes[i];
+            let input = contents.childNodes[0];
             if (i === 0) { input.setAttribute('checked', true) }
-            input.addEventListener('change', window.alert('hi'))
+            input.addEventListener('change', sort)
             navSection.appendChild(contents);
           }
         }
