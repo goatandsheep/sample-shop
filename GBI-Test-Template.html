@@ -100,6 +100,10 @@
         this.products = json.products;
         this.navs = json.navs;
 
+        function sort() {
+          renderProducts();
+        }
+
         function renderProducts() {
           let productSection = document.querySelector('.products');
           for (let i = 0; i < products.length; i++) {
@@ -112,6 +116,9 @@
           let navSection = document.querySelector('.nav');
           for (let i = 0; i < navs.length; i++) {
             let contents = new Nav(this.navs[i]);
+            let input = contents.childNodes[i];
+            if (i === 0) { input.setAttribute('checked', true) }
+            input.addEventListener('change', window.alert('hi'))
             navSection.appendChild(contents);
           }
         }
@@ -188,7 +195,7 @@
         background-color: #eeeeee;
         display: flex;
         flex-wrap: wrap;
-        overflow:scroll;
+        overflow: scroll;
       }
       .radio {
         border: #878783;
@@ -200,7 +207,7 @@
       .wrapper {
         display: flex;
         height: 100%;
-        overflow:auto;
+        overflow: auto;
         position: relative;
         width: 100%;
       }
