@@ -33,7 +33,7 @@
         this._title = obj.title;
 
         this.render = () => {
-          let template = `<div class="product"><img class="shop-img">${this._sale ? `<div class="for-sale">On<br>Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
+          let template = `<div class="product"><img src="http://via.placeholder.com/144x180" class="shop-img">${this._sale ? `<div class="for-sale">On<br>Sale</div>`:``}<div class="product-top"><span class="product-title">${this._title}</span><span class="product-price">${this._price}</span></div><div class="product-desc">${this._desc}</div></div>`
           let node = document.createElement('div');
           node.innerHTML = template;
           return node;
@@ -163,8 +163,11 @@
         background-color: #cc0000;
         color: white;
         font-size: 8px;
-        text-align: center;
         height: 25px;
+        position: absolute;
+        right: 8px;
+        text-align: center;
+        top: 8px;
         vertical-align: middle;
         width: 25px;
 
@@ -178,16 +181,14 @@
       .nav {
         background-color: #dddddd;
         height: 100%;
-        left:0px;
         padding: 10px;
-        position: absolute;
-        width: 15%;
+        width: 150px;
       }
       .products {
         background-color: #eeeeee;
         display: flex;
-        float: right;
-        width: 85%;
+        flex-wrap: wrap;
+        overflow:scroll;
       }
       .radio {
         border: #878783;
@@ -206,8 +207,9 @@
 
       .product {
         background-color: white;
-        margin: 20px;
+        margin: 10px;
         padding: 5px;
+        position: relative;
       }
 
       .product-top{}
@@ -218,6 +220,8 @@
 
       .product-price{
         font-size: 12px;
+        position: absolute;
+        right: 5px;
       }
 
       .product-desc{
